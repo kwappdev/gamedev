@@ -1,0 +1,3 @@
+[submodule "gamedev-utils"]
+	path = gamedev-utils
+	url = git@github.com:kwappdev/gamedev-utils.git
