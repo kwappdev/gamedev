@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 # PROJECT
 set(TARGET gamedev)
-add_subdirectory(${TARGET}-utils)
+add_subdirectory(modules/${TARGET}-utils)
 project(${TARGET} LANGUAGES CXX)
 
 # FILES
