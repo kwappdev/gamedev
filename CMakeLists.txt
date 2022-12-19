@@ -1,11 +1,16 @@
 # SETTINGS
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.3)
 set(CMAKE_CXX_STANDARD 20)
+
+# PACKAGE MANAGER
+set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
 
 # PROJECT
 set(TARGET gamedev)
 project(${TARGET} LANGUAGES CXX)
-add_subdirectory(modules/${TARGET}-utils)
+
+# PACKAGES
+add_subdirectory(modules/gamedev-utils)
 
 # CONSTANTS
 set(INCLUDE_DIR include)
