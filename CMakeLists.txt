@@ -2,14 +2,10 @@
 cmake_minimum_required(VERSION 3.0)
 set(CMAKE_CXX_STANDARD 20)
 
-# PACKAGE MANAGER
-set(CMAKE_TOOLCHAIN_FILE "${CMAKE_CURRENT_LIST_DIR}/modules/gamedev-utils/modules/vcpkg/scripts/buildsystems/vcpkg.cmake" CACHE PATH "vcpkg")
-set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
-
 # PROJECT
-add_subdirectory(modules/gamedev-utils)
 set(TARGET gamedev)
 project(${TARGET} LANGUAGES CXX)
+add_subdirectory(modules/${TARGET}-utils)
 
 # CONSTANTS
 set(INCLUDE_DIR include)
