@@ -2,22 +2,19 @@
 cmake_minimum_required(VERSION 3.3)
 set(CMAKE_CXX_STANDARD 20)
 
-# PACKAGE MANAGER
-set(VCPKG_TARGET_TRIPLET "x64-windows" CACHE STRING "")
-
-# PROJECT
-set(TARGET gamedev)
-project(${TARGET} LANGUAGES CXX)
-
-# PACKAGES
-add_subdirectory(modules/gamedev-utils)
-
 # CONSTANTS
+set(TARGET gamedev)
 set(INCLUDE_DIR include)
 
 # FILES
 file(GLOB_RECURSE SOURCES src/*.cpp)
 file(GLOB_RECURSE HEADERS ${INCLUDE_DIR}/*.h)
+
+# PROJECT
+project(${TARGET} LANGUAGES CXX)
+
+# PACKAGES
+add_subdirectory(modules/gamedev-utils)
 
 # TARGET
 add_executable(
