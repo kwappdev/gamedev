@@ -1,43 +1,23 @@
-# SETTINGS
-cmake_minimum_required(VERSION 3.3)
-set(CMAKE_CXX_STANDARD 20)
+cmake_minimum_required(VERSION 3.0)
 
-# CONSTANTS
-set(TARGET gamedev)
-set(INCLUDE_DIR include)
+# CMAKE FILES
+include(cmake/config.cmake)
+include(cmake/packages.cmake)
+include(cmake/build.cmake)
 
-# FILES
-file(GLOB_RECURSE SOURCES src/*.cpp)
-file(GLOB_RECURSE HEADERS ${INCLUDE_DIR}/*.h)
+# SUBMODULES
+add_subdirectory(modules/gamedev-utils)
+
+# PREREQUISITES
+ConfigureTarget("gamedev")
 
 # PROJECT
 project(${TARGET} LANGUAGES CXX)
-
-# PACKAGES
-add_subdirectory(modules/gamedev-utils)
-
-# TARGET
-add_executable(
-        ${TARGET}
-        ${SOURCES}
-        ${HEADERS}
-)
-
-# MODULES
+FindBuildAndInclude(
+        ${TARGET} ""
+        ${SOURCES} ${HEADERS}
+        ${INCLUDE_DIR})
 target_link_libraries(
-        ${TARGET} PUBLIC
-        utils
-)
-
-# INCLUDE
-target_include_directories(
-        ${TARGET} PUBLIC
-        ${INCLUDE_DIR}
-        $<INSTALL_INTERFACE:include>
-)
-
-# OPTIONS
-target_compile_options(
         ${TARGET} PRIVATE
-        -Wall -Wextra
+        utils
 )
